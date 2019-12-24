@@ -20,6 +20,7 @@
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
         
             // the link to your model provided by Teachable Machine export panel
+            
             const URL = "./my_model/";
         
             let model, webcam, labelContainer, maxPredictions;
@@ -47,7 +48,7 @@
             }
         
             async function loop() {
-                 // update the webcam frame
+                 
                 await predict();
                 window.requestAnimationFrame(loop);
             }
@@ -59,19 +60,20 @@
                 let names = ['paper','scissor','stone'];
                 let name = 'stone';
                 let temp = 0;
-
+                 
+                //take sum of 10 predictions to reduce error
                 for(let j =0; j<10;j++){
+                    // update the webcam frame
                     webcam.update();
+                    
+                    // predict can take in an image, video or canvas html element
                     const prediction = await model.predict(webcam.canvas);
                     for(let i=0;i<3;i++){
                         av[i] += parseInt(prediction[i].probability.toFixed(2));
                     }
-                    
-
+     
                 }
-                // predict can take in an image, video or canvas html element
                 
-
                 
                 for(let i =0; i<3;i++){
                     if(av[i] > temp){
@@ -81,6 +83,7 @@
                     
                 }
                 
+                //update  image of hand
                 document.getElementById('image').src = './'+ name+'.jpg';
 
                 
