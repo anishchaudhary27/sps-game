@@ -3,6 +3,6 @@ this is a stone paper scissor which uses ml in background to determine what move
 
 for the model head over to https://teachablemachine.withgoogle.com/train/image, train your model here then extract the downloaded model and past the extracted three files in my-model folder.
 
-replace class1 -> scissor
-        class2 -> paper
-        class3 -> stone
+replace class1 -> scissor,
+        class2 -> paper,
+        class3 -> stone,
